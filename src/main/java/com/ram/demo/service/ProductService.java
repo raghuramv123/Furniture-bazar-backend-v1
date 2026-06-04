@@ -124,20 +124,26 @@ import jakarta.transaction.Transactional;
 		}
 		
 		private void mapRequestToProduct(ProductRequest req, Product p, Category c) {
-			p.setName(req.getName());
-			p.setDescription(req.getDescription());
-			p.setPrice(req.getPrice());
-			p.setSalePrice(req.getSalePrice());
-			p.setStockQuantity(req.getStockQuantity());
-			p.setSku(req.getSku());
-			p.setCategory(c);
-			p.setMaterial(req.getMaterial());
-			p.setDimensions(req.getDimensions());
-			p.setWeightKg(req.getWeightKg());
-			p.setColor(req.getColor());
-			p.setFinish(req.getFinish());
-			p.setActive(req.isActive());
-			p.setFeatured(req.isFeatured());
+		    p.setName(req.getName());
+		    p.setDescription(req.getDescription());
+		    p.setPrice(req.getPrice());
+		    p.setSalePrice(req.getSalePrice());
+		    p.setStockQuantity(req.getStockQuantity());
+		    p.setSku(req.getSku());
+		    p.setCategory(c);
+		    p.setMaterial(req.getMaterial());
+		    p.setDimensions(req.getDimensions());
+		    p.setWeightKg(req.getWeightKg());
+		    p.setColor(req.getColor());
+		    p.setFinish(req.getFinish());
+		    p.setInstallationType(req.getInstallationType());
+		    p.setFrameType(req.getFrameType());
+		    p.setGlassType(req.getGlassType());
+		    p.setWoodGrade(req.getWoodGrade());
+		    p.setThickness(req.getThickness());
+		    // ── handle null Boolean safely ──
+		    p.setActive(req.getActive() != null ? req.getActive() : true);
+		    p.setFeatured(req.getFeatured() != null ? req.getFeatured() : false);
 		}
 		
 		private String generateSlug(String name) {

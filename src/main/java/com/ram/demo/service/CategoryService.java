@@ -49,12 +49,11 @@ public class CategoryService {
         category.setSlug(req.getSlug());
         category.setImageUrl(req.getImageUrl());
         category.setDisplayOrder(req.getDisplayOrder() != null ? req.getDisplayOrder() : 0);
-        category.setActive(true);
+        category.setActive(true);  // ── explicitly set ──
 
         if (req.getParentId() != null) {
             Category parent = categoryRepository.findById(req.getParentId())
-                    .orElseThrow(() ->
-                        new ResourceNotFoundException("Parent category not found"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Parent not found"));
             category.setParent(parent);
         }
         return categoryRepository.save(category);

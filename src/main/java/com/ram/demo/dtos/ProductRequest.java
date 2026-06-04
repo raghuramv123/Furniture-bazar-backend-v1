@@ -56,6 +56,10 @@ public class ProductRequest {
     @Size(max = 50)  private String woodGrade;
     @Min(0)          private Integer thickness;
 
-    private boolean isActive   = true;
-    private boolean isFeatured = false;
+ // ── FIXED: Boolean (wrapper) not boolean (primitive) ──
+ // primitive boolean defaults to false if JSON sends null
+ // wrapper Boolean can be null and we handle it explicitly
+
+ private Boolean active;
+ private Boolean featured;
 }

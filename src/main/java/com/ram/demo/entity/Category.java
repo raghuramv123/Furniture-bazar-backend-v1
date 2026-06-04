@@ -57,8 +57,8 @@ public class Category {
     private String imageUrl;
     private Integer displayOrder;
 
-    @Column(name = "is_active")
-    private boolean active;
+    @Column(name = "is_active", nullable = false, columnDefinition = "boolean default true")
+    private boolean active = true;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     @JsonIgnore   // ── never serialize products inside category ──

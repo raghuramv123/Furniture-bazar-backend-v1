@@ -50,13 +50,13 @@ public class SecurityConfig {
             	    .requestMatchers("/api/auth/**").permitAll()
             	    .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
             	    .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
+            	    .requestMatchers("/api/upload/files/**").permitAll()  // serve images publicly
+            	    .requestMatchers(HttpMethod.POST, "/api/upload/**").hasRole("ADMIN")
             	    .requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN")
             	    .requestMatchers(HttpMethod.PUT,  "/api/products/**").hasRole("ADMIN")
             	    .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN")
             	    .requestMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN")
             	    .requestMatchers(HttpMethod.PUT,  "/api/categories/**").hasRole("ADMIN")
-            	    .requestMatchers("/api/upload/files/**").permitAll()  // serve images publicly
-            	    .requestMatchers(HttpMethod.POST, "/api/upload/**").hasRole("ADMIN")
             	    .requestMatchers("/api/admin/**").hasRole("ADMIN")
             	    .requestMatchers("/h2-console/**").permitAll()
             	    .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
